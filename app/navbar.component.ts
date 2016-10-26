@@ -13,7 +13,7 @@ export class NavBarComponent {
 
     isCurrentRoute(route){
         var statement = this._router.generate(route);
-        console.log(statement);
+        //console.log(statement);
         return this._router.isRouteActive(statement);
     }
 }
