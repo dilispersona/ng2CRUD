@@ -4,7 +4,7 @@ import { FormBuilder, ControlGroup, Validators } from 'angular2/common';
 import { CanDeactivate, Router, RouteParams } from 'angular2/router';
 import { BasicValidators } from './basicValidators';
 import { UserService } from './users.service';
-import {User} from './user';
+import { User } from './user';
 
 @Component({
     templateUrl: 'app/user-form.component.html',
@@ -41,15 +41,26 @@ export class UserFormComponent implements OnInit, CanDeactivate {
     }
 
     save() {
-        this._userService.addUser(this.form.value)
-            .subscribe(x => {
-                this._router.navigate(['Users']);
-            })
+        var result;
+
+        if (this.user.id) {
+            result = this._userService.updateUser(this.user);
+        } else {
+            result = this._userService.addUser(this.user);
+        }
+
+        result.subscribe(x => {
+            // Ideally, here we'd want:
+            // this.form.markAsPristine();
+            this._router.navigate(['Users']);
+        });
+
+
     }
 
     ngOnInit() {
         var id = this._routeParams.get("id");
-        
+
         this.title = id ? "Edit User" : "New User";
 
         if (!id)
