@@ -18,7 +18,7 @@ export class UsersComponent {
             .subscribe(users => this.users = users);
     }
 
-    deleteUser(user){
+   /* deleteUser(user){
         if(confirm("Are you sure you want to delete " + user.name + "?")){
             var index = this.users.indexOf(user);
 
@@ -33,9 +33,9 @@ export class UsersComponent {
  						this.users.splice(index, 0, user);
  					});
         }
-    }
+    }*/
 
- /*   deleteUser(user, e) {
+    deleteUser(user, e) {
         if (confirm("You are about to delete the user " + user.name + ", are you sure?")) {
             var  e = e || window.event;
             e.path[2].hidden = true;
@@ -43,10 +43,9 @@ export class UsersComponent {
                 .subscribe(null,
                 err => {
                     alert("Could not delete user")
-                    event.path[2].hidden = false;
+                    e.path[2].hidden = false;
                 });
-        }*/
+        }
     }
-
 
 }
