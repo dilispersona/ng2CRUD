@@ -36,6 +36,9 @@ export class PostsComponent implements OnInit {
 
     select(post){
         this.currentPost = post;
+          this._postService.getComments(post.id)
+              .subscribe(comments => 
+              this.currentPost.comments = comments); 
     }
 
 }
