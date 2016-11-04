@@ -20,7 +20,7 @@ import {SpinnerComponent} from './spinner.component';
 })
 export class PostsComponent implements OnInit {
     posts = [];
-    isLoading = true;
+    postsLoading = true;
     currentPost;
     commentsLoading;
 
@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
  			.subscribe(
                 posts => this.posts = posts,
                 null, 
-                () => {this.isLoading = false;}
+                () => {this.postsLoading = false;}
                 );
  	}
 
