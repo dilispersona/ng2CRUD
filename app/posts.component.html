@@ -1,6 +1,12 @@
 <h1>Posts</h1>
 <div class="row">
 	<div class="col-md-6">
+		<select class="form-control" (change)="reloadPosts({ userId: u.value })" #u>
+             <option value="">Select a user...</option>
+             <option *ngFor="#user of users" value="{{ user.id }}">
+                 {{ user.name }}
+             </option>
+         </select>
 		<spinner [visible]="postsLoading"></spinner>
 		<ul class="list-group posts">
 			<li *ngFor="#post of posts" class="list-group-item" [class.active]="currentPost == post" (click)="select(post)">
@@ -15,7 +21,7 @@
 			</div>
 			<div class="panel-body">
 				<p>{{ currentPost.body }}</p>
-				
+
 				<hr/>
 				<spinner [visible]="commentsLoading"></spinner>
 				<div class="media" *ngFor="#comment of currentPost.comments">
@@ -27,7 +33,7 @@
 					<div class="media-body">
 						<h4 class="media-heading">
 							{{ comment.name }}
-						</h4> 
+						</h4>
 						{{ comment.body }}
 					</div>
 				</div>
