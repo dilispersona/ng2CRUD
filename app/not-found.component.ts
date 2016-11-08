@@ -1,8 +1,8 @@
-import { Component } from 'angular2/core';
+import {Component} from 'angular2/core';
 
 @Component({
     template: `
-      	<h1>Not Found</h1>
-      `
+    	<h1>Not Found</h1>
+    `
 })
 export class NotFoundComponent { }
